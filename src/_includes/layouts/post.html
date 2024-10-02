@@ -1,36 +1,16 @@
+---
+preloadCSS: '/assets/css/blog.css'
+eleventyComputed:
+    title: '{{ title }}'
+    description: '{{ description }}'
+    preloadImg: '{{ image }}'
+    permalink: '/blog/{{ title | slug }}/index.html'
+---
+
 {% extends "layouts/base.html" %}
 
 {% block head %}
     <link rel="stylesheet" href="/assets/css/blog.css">
-
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Article",
-            {% if title %}"headline": "{{ title }}",{% endif %}
-            {% if image %}
-                "image": ["{{ image }}"],
-            {% endif %}
-            {% if date %}"datePublished": "{{ date | postDate }}",{% endif %}
-            {% if client.name %}
-                "publisher": {
-                    "@type": "Organization",
-                    "name": "{{ client.name }}"
-                },
-            {% endif %}
-            {% if author %}
-                "author": [
-                    {
-                        "@type": "Person",
-                        "name": "{{ author }}"
-                    }
-                ],
-            {% endif %}
-            {% if description %}"articleBody": "{{ description | safe }}",{% endif %}
-            {% if client.domain and page.url %}"url": "{{ client.domain }}{{ page.url }}",{% endif %}
-            {% if tags %}"articleSection": "{{ tags }}"{% endif %}
-        }
-    </script>
 {% endblock %}
 
 {% block body %}
@@ -60,7 +40,7 @@
             <article class="blog-article">
                 <!--Main Article Image-->
                 <picture class="blog-mainImage">
-                    <img src="{{ image }}" alt="{{ imageAlt }}" width="795" height="400" decoding="async"/>
+                    <img src="{{ image }}" alt="{{ imageAlt }}" width="795" height="400" decoding="async" />
                 </picture>
 
                 <!--Article Info-->

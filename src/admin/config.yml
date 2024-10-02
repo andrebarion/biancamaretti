@@ -16,17 +16,84 @@ collections:
       create: true
       slug: "{{slug}}"
       fields:
-          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Título", name: "title", widget: "string" }
           - {
                 label: "URL Slug",
                 name: "url",
                 widget: "string",
-                hint: 'Specify where the page will be written to. If you use "Blog Post", the post will be accessible from "blog/blog-post"',
+                hint: 'Especifique onde a página será escrita. Se você usar "Post do Blog", a postagem será acessível em "blog/post-do-blog"',
             }
-          - { label: "Description", name: "description", widget: "string" }
-          - { label: "Author", name: "author", widget: "string" }
-          - { label: "Date", name: "date", widget: "datetime" }
+          - { label: "Descrição", name: "description", widget: "string" }
+          - { label: "Autor", name: "author", widget: "string" }
+          - { label: "Data", name: "date", widget: "datetime" }
           - { label: "Tags", name: "tags", widget: "list", default: ["post"] }
-          - { label: "Featured Image", name: "image", widget: "image" }
-          - { label: "Image Caption", name: "imageAlt", widget: "string" }
-          - { label: "Body", name: "body", widget: "markdown" }
+          - { label: "Imagem Destacada", name: "image", widget: "image" }
+          - { label: "Legenda da Imagem", name: "imageAlt", widget: "string" }
+          - { label: "Idioma", name: "language", widget: "select", options: ["en", "fr"] }  
+          - { label: "Conteúdo", name: "body", widget: "markdown" }
+    - name: "biography"
+      label: "Biografia"
+      folder: "src/content/biography"
+      create: true
+      slug: "{{slug}}"
+      fields:
+          - { label: "Biografia em Inglês", name: "en", widget: "markdown" }  
+          - { label: "Biografia em Francês", name: "fr", widget: "markdown" }  
+    - name: "media"
+      label: "Mídia"
+      folder: "src/content/media"
+      create: true
+      slug: "{{slug}}"
+      fields:
+      - { label: "Mostrar na Galeria", name: "showGallery", widget: "boolean", default: "true" }  # Add checkbox field
+      - { label: "Imagem", name: "image", widget: "image", required: false  }  # Use the image widget
+      - { label: "Vídeo", name: "videoUrl", widget: "string", required: false , hint: "YouTube Embead URL. Nesse caso não precisa subir nenhuma imagem acima (exemplo de url: https://www.youtube.com/embed/0BNCYM4InT0?si=a7-_fmCbCwfQQzKb)" }
+      - { label: "Legenda em Inglês", name: "en", widget: "string", required: false  }
+      - { label: "Legenda em Francês", name: "fr", widget: "string", required: false  }
+    - name: "schedule"
+      label: "Cronograma"
+      folder: "src/content/schedule"
+      create: true
+      slug: "{{slug}}"
+      fields:
+          - { label: "Nome", name: "name", widget: "string" }
+          - { label: "Data", name: "date", widget: "datetime" }
+          - { label: "Hora", name: "hour", widget: "string", hint: "(ex. 19:00)" }
+          - { label: "Local", name: "location", widget: "string" }
+          - { label: "Participantes", name: "participants", widget: "string", required: false }
+          - { label: "Link Externo", name: "externalLink", widget: "string", hint: "(ex. www.externallink.com)"  }
+    - name: "academicProduction"
+      label: "Produção Acadêmica"
+      folder: "src/content/academicProduction"
+      create: true
+      slug: "{{slug}}"
+      fields:
+          - label: "Publicações"
+            name: "publications"
+            widget: "list"
+            fields:
+                  - { label: "Nome em Inglês", name: "en", widget: "string", required: false  } 
+                  - { label: "Nome em Francês", name: "fr", widget: "string", required: false  } 
+                  - { label: "Link", name: "link", widget: "string" } 
+          - { label: "Mini Bio em Inglês", name: "en", widget: "markdown" }  
+          - { label: "Mini Bio em Francês", name: "fr", widget: "markdown" }
+    - name: "footerVideo"
+      label: "Vídeo do Rodapé"
+      folder: "src/content/footerVideo"
+      create: true
+      slug: "{{slug}}"
+      fields:
+          - { label: "URL de Incorporação do YouTube", name: "url", widget: "string", hint: "(ex. https://www.youtube.com/embed/0BNCYM4InT0?si=a7-_fmCbCwfQQzKb)" }
+    - name: "contactInfo"
+      label: "Informações de Contato"
+      folder: "src/content/contactInfo"
+      create: true
+      slug: "{{slug}}"
+      fields:
+          - { label: "Nome", name: "name", widget: "string" }
+          - { label: "Cargo em Inglês", name: "en", widget: "string", required: false   }  
+          - { label: "Cargo em Francês", name: "fr", widget: "string", required: false   }
+          - { label: "Endereço", name: "address", widget: "string", required: false   }
+          - { label: "Telefone", name: "phone", widget: "string", required: false   }
+          - { label: "Site", name: "website", widget: "string", required: false   }
+   

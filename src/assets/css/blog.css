@@ -801,5 +801,22 @@
     flex-direction: row;
   }
 }
+.text-align-right {
+  text-align: right;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+/*-- -------------------------- -->
+<---        Navigation          -->
+<--- -------------------------- -*/
+.cs-nav,
+.cs-dropdown-button {
+  font-family: "Carrois", Arial, sans-serif;
+  letter-spacing: 0.1em;
+  font-size: 1em;
+}
 
 /*# sourceMappingURL=blog.css.map */

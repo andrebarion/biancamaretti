@@ -1,5 +1,99 @@
 /* CODESTITCH STYLES, RESET, HEADER/NAVIGATION AND FOOTER */
 /*-- -------------------------- -->
+<---          Gallery           -->
+<--- -------------------------- -*/
+/* Mobile - 360px */
+@media only screen and (min-width: 0rem) {
+  #gallery-1152 {
+    padding: var(--sectionPadding);
+  }
+  #gallery-1152 .cs-container {
+    width: 100%;
+    /* changes to 1280px at large desktop */
+    max-width: 59rem;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* 48px - 64px */
+    gap: clamp(3rem, 6vw, 4rem);
+  }
+  #gallery-1152 .cs-content {
+    /* set text align to left if content needs to be left aligned */
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* centers content horizontally, set to flex-start to left align */
+    align-items: center;
+  }
+  #gallery-1152 .cs-topper {
+    color: #767676;
+  }
+  #gallery-1152 .cs-title {
+    margin: 0;
+  }
+  #gallery-1152 .cs-gallery {
+    width: 100%;
+    /* changes to 100% at tablet */
+    max-width: 31.25rem;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    /* 16px - 20px */
+    gap: clamp(1rem, 1.5vw, 1.25rem);
+  }
+  #gallery-1152 .cs-image {
+    /* 260px - 360px */
+    min-height: clamp(16.25rem, 60vw, 20rem);
+    border-radius: 1rem;
+    /* clips the image corners */
+    overflow: hidden;
+    display: block;
+    grid-column: span 12;
+    grid-row: span 1;
+    position: relative;
+  }
+  #gallery-1152 .cs-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    /* makes it act like a background image */
+    object-fit: cover;
+  }
+}
+/* Tablet - 700px */
+@media only screen and (min-width: 43.75rem) {
+  #gallery-1152 .cs-gallery {
+    max-width: 100%;
+    grid-template-rows: 1fr;
+  }
+  #gallery-1152 .cs-image {
+    grid-column: span 4;
+  }
+  #gallery-1152 .cs-image:nth-of-type(4), #gallery-1152 .cs-image:nth-of-type(5) {
+    grid-column: span 6;
+  }
+}
+/* Large Desktop - 1300px */
+@media only screen and (min-width: 81.25rem) {
+  #gallery-1152 .cs-container {
+    max-width: 80rem;
+  }
+  #gallery-1152 .cs-gallery {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  #gallery-1152 .cs-image {
+    grid-column: span 1;
+  }
+  #gallery-1152 .cs-image:nth-of-type(4), #gallery-1152 .cs-image:nth-of-type(5) {
+    grid-column: span 1;
+  }
+}
+/*-- -------------------------- -->
 <---        Core Styles         -->
 <--- -------------------------- -*/
 /* CodeStitch Root and Helpers */
@@ -37,7 +131,6 @@
     max-width: 43.75rem;
     font-size: var(--headerFontSize);
     line-height: 1.2em;
-    font-weight: 900;
     color: var(--headerColor);
     text-align: inherit;
   }
@@ -46,9 +139,10 @@
     max-width: 40.625rem;
     width: 100%;
     font-size: var(--bodyFontSize);
-    line-height: 1.5em;
+    line-height: 1.7em;
     color: var(--bodyTextColor);
     text-align: inherit;
+    letter-spacing: 0.5px;
   }
   .cs-button-solid {
     z-index: 1;
@@ -106,7 +200,7 @@
     margin: 0;
     overflow-x: hidden;
     padding: 0;
-    font-family: "Roboto", Arial, sans-serif;
+    font-family: "Lato", Arial, sans-serif;
     font-size: 100%;
     color: var(--bodyTextColor);
   }
@@ -131,6 +225,8 @@
   h4,
   h5,
   h6 {
+    font-family: "Fraunces", "Arial", sans-serif;
+    font-weight: 100;
     margin: 0;
     color: var(--headerColor);
   }
@@ -155,6 +251,37 @@
     top: 0;
     left: 0;
     opacity: 0;
+  }
+  /* Lato-regular - latin */
+  @font-face {
+    font-style: normal;
+    font-family: "Lato";
+    font-weight: 400;
+    font-display: swap;
+    src: local(""), url("/assets/fonts/Lato-Regular.ttf") format("ttf"), url("/assets/fonts/Lato-Regular.ttf") format("ttf"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  /* fraunces-regular - latin */
+  @font-face {
+    font-style: normal;
+    font-family: "Fraunces";
+    font-weight: 400;
+    font-display: swap;
+    src: local(""), url("/assets/fonts/static/Fraunces_9pt-Regular.ttf") format("ttf"), url("/assets/fonts/static/Fraunces_9pt-Regular.ttf") format("ttf"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  } /* fraunces-light - latin */
+  @font-face {
+    font-style: normal;
+    font-family: "Fraunces";
+    font-weight: 100;
+    font-display: swap;
+    src: local(""), url("/assets/fonts/static/Fraunces_9pt-Italic.ttf") format("ttf"), url("/assets/fonts/static/Fraunces_9pt-Italic.ttf") format("ttf"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  }
+  /* Carrois_Gothic_SC-regular - latin */
+  @font-face {
+    font-style: normal;
+    font-family: "Carrois";
+    font-weight: 400;
+    font-display: swap;
+    src: local(""), url("/assets/fonts/CarroisGothicSC-Regular.ttf") format("ttf"), url("/assets/fonts/CarroisGothicSC-Regular.ttf") format("ttf"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
   }
   /* roboto-regular - latin */
   @font-face {
@@ -273,8 +400,6 @@
     /* prevents padding from affecting height and width */
     box-sizing: border-box;
     padding: 0.75rem 1rem;
-    /* remove the font family so the Stitch inherits the fonts from your global stylesheet */
-    font-family: "Roboto", "Arial", sans-serif;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
   #cs-navigation .cs-container {
@@ -730,8 +855,6 @@
     /* prevents padding from affecting height and width */
     box-sizing: border-box;
     padding: 0 1rem;
-    /* remove the font family so the Stitch inherits the fonts from your global stylesheet */
-    font-family: "Roboto", "Arial", sans-serif;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
   #cs-navigation .cs-container {
@@ -1238,6 +1361,97 @@
   body.dark-mode #footer {
     background: #061623;
   }
+}
+/*-- -------------------------- -->
+<---    Swipper Carroussel      -->
+<--- -------------------------- -*/
+/*-- -------------------------- -->
+<---    Swipper Carroussel      -->
+<--- -------------------------- -*/
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 500px;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-slide {
+  width: 80%;
+}
+
+.swiper-slide:nth-child(1n) {
+  width: 60%;
+}
+
+.swiper-slide:nth-child(3n) {
+  width: 40%;
+}
+
+@media (max-width: 768px) {
+  .swiper-slide {
+    width: 100% !important;
+    max-height: 240px !important;
+  }
+}
+/*-- -------------------------- -->
+<---       Mini Classes        -->
+<--- -------------------------- -*/
+@media only screen and (min-width: 0rem) {
+  .text-align-right {
+    text-align: right !important;
+  }
+  .text-align-left {
+    text-align: left !important;
+  }
+}
+/*-- -------------------------- -->
+<---    Biography      -->
+<--- -------------------------- -*/
+.biography {
+  background-color: rgba(255, 120, 79, 0.9);
+}
+.biography h2 {
+  align-self: center;
+  margin-top: 30%;
+  transform: translateY(-50%);
+  color: rgb(255, 255, 255);
+}
+.biography h2:before, .biography h2:after {
+  content: "";
+  display: block;
+  width: 80%;
+  height: 2px;
+  background-color: #FFF1D0;
+  margin: 35px 0;
+}
+.biography p {
+  margin-bottom: 35px !important;
+  color: rgb(255, 255, 255);
+}
+
+/*-- -------------------------- -->
+<---        Navigation          -->
+<--- -------------------------- -*/
+.cs-nav,
+.cs-dropdown-button {
+  font-family: "Carrois", Arial, sans-serif;
+  letter-spacing: 0.1em;
+  font-size: 1em;
 }
 
 /*# sourceMappingURL=root.css.map */
